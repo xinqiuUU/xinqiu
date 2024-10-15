@@ -26,6 +26,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin: auto; /* 使 container 在水平方向上居中 */
         }
         h5 {
             color: #444;

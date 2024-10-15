@@ -109,9 +109,9 @@ public class UserWebSocketController {
 
         // 当前时间戳
         long currentTimestamp = System.currentTimeMillis() / 1000;
-
+        String uname = (String) userClaims.get("uname");
         // 使用 RedisTemplate 添加新成员到有序集合
-        redisTemplate.opsForZSet().add("content_" + uid, userClaims.get("uname") + ":" + content, currentTimestamp);
+        redisTemplate.opsForZSet().add("content_" + uid, uname + ":" + content, currentTimestamp);
 
         jm.setCode(1);
         jm.setObj("发送成功");

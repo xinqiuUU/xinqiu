@@ -3,7 +3,9 @@ package com.yc.web.controllers;
 
 import com.aliyun.tea.TeaException;
 import com.yc.bean.ResponseResult;
+import com.yc.configuration.YzmConfig;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import com.aliyun.captcha20230305.models.VerifyCaptchaRequest;
@@ -17,6 +19,8 @@ import com.aliyun.teaopenapi.models.Config;
 @Slf4j
 public class YzmController {
 
+    @Autowired
+    private YzmConfig yzmConfig;
     @PostMapping ("/yzm")
     public ResponseResult regYzm(@RequestParam String captchaVerifyParam) throws Exception {
         log.info("验证码为："+captchaVerifyParam);
@@ -24,8 +28,8 @@ public class YzmController {
         Config config = new Config();
         // 设置您的AccessKey ID 和 AccessKey Secret。
         // getEnvProperty只是个示例方法，需要您自己实现AccessKey ID 和 AccessKey Secret安全的获取方式。
-        config.accessKeyId = "";
-        config.accessKeySecret = "";
+        config.accessKeyId = yzmConfig.getAccessKeyId();
+        config.accessKeySecret = yzmConfig.getAccessKeySecret();
         //设置请求地址
         config.endpoint = "captcha.cn-shanghai.aliyuncs.com";
         // 设置连接超时为5000毫秒

@@ -19,6 +19,17 @@
 
     <dependencies>
 
+        <!--  基于 Servlet 的 Web 应用中进行流量控制和熔断降级-->
+        <dependency>
+            <groupId>com.alibaba.csp</groupId>
+            <artifactId>sentinel-web-servlet</artifactId>
+        </dependency>
+        <!--   sentinel依赖  流量控制  熔断降级 热点流量  -->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        </dependency>
+
 
         <!--micrometer-tracing指标追踪  2-->
         <dependency>

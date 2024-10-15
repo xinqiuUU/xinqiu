@@ -1,0 +1,47 @@
+{
+  "groups": [
+    {
+      "name": "aliyun.oss",
+      "type": "com.yc.configuration.OSSConfig",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.yzm",
+      "type": "com.yc.configuration.YzmConfig",
+      "sourceType": "com.yc.configuration.YzmConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aliyun.oss.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.yzm.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.YzmConfig"
+    },
+    {
+      "name": "aliyun.yzm.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.YzmConfig"
+    }
+  ],
+  "hints": []
+}

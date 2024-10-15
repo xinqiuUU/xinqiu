@@ -55,15 +55,15 @@ public class MailBiz {
             message.setText(text , true);// 邮件内容 一定要有 true 代表当成html代码
             MailSender.send( mm );// 发送邮件
 
-            Email email = new Email(1,fromemail,to,subject,sendTime);
-            results.add(email);
-            webSocketServer.send( go.toJson(results) ); // 发送websocket消息 通知前端需要刷新了 即前端需要去redis数据库中读取消息了
+//            Email email = new Email(1,fromemail,to,subject,sendTime);
+//            results.add(email);
+//            webSocketServer.send( go.toJson(results) ); // 发送websocket消息 通知前端需要刷新了 即前端需要去redis数据库中读取消息了
         }catch (Exception e){
             e.printStackTrace();
             log.info("邮件发送失败:"+e.getMessage());
-            Email email = new Email(0,fromemail,to,subject,sendTime);
-            results.add(email);
-            webSocketServer.send( go.toJson(results) ); // 发送websocket消息 通知前端需要刷新了 即前端需要去redis数据库中读取消息了
+//            Email email = new Email(0,fromemail,to,subject,sendTime);
+//            results.add(email);
+//            webSocketServer.send( go.toJson(results) ); // 发送websocket消息 通知前端需要刷新了 即前端需要去redis数据库中读取消息了
         }
 
     }

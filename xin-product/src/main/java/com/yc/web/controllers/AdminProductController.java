@@ -44,7 +44,6 @@ public class AdminProductController {
     private ProductMapper productMapper;
     @Autowired
     private ProductPicUtil productPicUtil;
-
     @Autowired
     private ProductPicMapper productPicMapper;
     @Autowired

@@ -14,7 +14,7 @@
     </appender>
     
     <appender name="accessLog" class="ch.qos.logback.core.FileAppender">
-        <file>gateway_access_log.log</file>
+        <file>/logs/gateway_access_log.log</file>
         <encoder>
             <pattern>%msg%n</pattern>
         </encoder>

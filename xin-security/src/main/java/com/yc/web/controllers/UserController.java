@@ -93,8 +93,19 @@ public class UserController {
     public ResponseResult emailLogin(@RequestBody ResuserVO resuserVO , HttpSession session){
         //获取验证码
         String captcha = String.valueOf( session.getAttribute( "captcha" ) ) ;
+        //获取邮箱
         String email = String.valueOf( session.getAttribute( "email" ) ) ;
-
+        //判断用户是否注册
+        QueryWrapper<User> userWrapper = new QueryWrapper<>();
+        userWrapper.eq( "email", resuserVO.getEmail() );
+        //查询用户是否存在
+        User u = userMapper.selectOne( userWrapper );
+        if(u == null){
+            //如果用户不存在  则注册
+            u = new User();
+            u.setEmail( email );
+            userMapper.insert( u );
+        }
         //验证码校验  验证码  忽略大小写
         if(!captcha.equals( resuserVO.getCaptcha() ) || !email.equals( resuserVO.getEmail() ) ){
             return ResponseResult.error( "验证码或邮箱错误" );
@@ -110,6 +121,8 @@ public class UserController {
         wrapper.eq( "email", resuserVO.getEmail() );
         User user = userMapper.selectOne( wrapper );
         payload.put( "uid", user.getUid().toString());
+        payload.put( "uname", user.getUname() );
+
         //生成token
         String jwtToken = jwtUtil.encodeJWT( payload );
         return ResponseResult.ok( "登录成功" ).setData( jwtToken );

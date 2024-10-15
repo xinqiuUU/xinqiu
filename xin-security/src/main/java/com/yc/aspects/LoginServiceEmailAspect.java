@@ -20,7 +20,6 @@ import java.util.Map;
 @Order(10)  // 优先级
 public class LoginServiceEmailAspect {
 
-    //存款
     @Pointcut("execution(* com.yc.web.controllers.CaptchaController.getCaptcha(..))") //邮件切点
     public void login() {}
 
