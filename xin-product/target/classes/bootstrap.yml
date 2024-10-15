@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: xin-product   #3个作用:1.nacos中服务名称  2.配置文件在nacos中的文件名前缀 3.日志文件名称
+  # nacos 配置
+  cloud:
+    nacos:
+      config:
+        server-addr: localhost:8848 #nacos服务地址 根据实际环境中修改
+        username: nacos
+        password: nacos
+        #namespace -> group ->${prefix}-${spring.profiles.active}.${file-extension}
+        namespace: public  #命名空间 根据实际环境中修改
+        group: DEFAULT_GROUP   #组 根据实际环境中修改
+        prefix: xin-product #配置文件在nacos中的文件名(不包括后缀) 根据实际环境中修改
+        file-extension: yml #指定配置文件的格式
+        shared-configs:  #共享配置文件
+          - {data-id: redis.yml,refresh: true} #redis配置
+          - {data-id: xin-mysql.yml,refresh: true} #refresh: true 表示配置文件发生变化时,自动刷新
+          - {data-id: aliyunOSS.yml,refresh: true} #阿里云OSS配置
+          - {data-id: threadpool.yml,refresh: true} #线程池配置
+          - {data-id: activemq.yml,refresh: true} #activemq配置
+          - {data-id: mybatisplus.yml,refresh: true} #mybatis-plus配置
+          - { data-id: micrometer.yml,refresh: true } # 监控配置 链路追踪
+
+
+#  profiles:  #指定环境
+#    active: dev    #指定使用的配置文件  根据实际环境中修改
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG    #指定日志级别

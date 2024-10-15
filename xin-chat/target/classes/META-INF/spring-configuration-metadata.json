@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "aliyun.oss",
+      "type": "com.yc.configuration.OSSConfig",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "aliyun.oss.access-key-id",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.access-key-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.bucket-name",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    },
+    {
+      "name": "aliyun.oss.endpoint",
+      "type": "java.lang.String",
+      "sourceType": "com.yc.configuration.OSSConfig"
+    }
+  ],
+  "hints": []
+}

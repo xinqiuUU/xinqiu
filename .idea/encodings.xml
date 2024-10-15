@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-address/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-cart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-chat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-comment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-consumer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-coupon/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-entity/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-product/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xin-security/src/main/java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

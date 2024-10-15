@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>评论系统</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/wangeditor/dist/wangEditor.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/wangeditor/dist/wangEditor.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <h2>发表评论</h2>
+    <div id="editor" style="border: 1px solid #ccc; margin-bottom: 10px;"></div>
+    <button @click="submitComment">提交评论</button>
+
+    <h3>评论列表</h3>
+    <div v-for="comment in comments" :key="comment.id" style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+        <div v-html="comment.content"></div>
+        <p>—— {{ comment.author }}</p>
+    </div>
+</div>
+
+<script>
+    var app =new Vue({
+        el: '#app',
+        data() {
+            return {
+                comments: [],
+                editor: null,
+                author: '用户A' // 示例作者，可以替换为实际用户
+            };
+        },
+        methods: {
+            // 从后端获取评论数据
+            async fetchComments() {
+                try {
+                    const response = await axios.get(`/comment/author/${this.author}`);
+                    this.comments = response.data;
+                } catch (error) {
+                    console.error('获取评论时出错:', error);
+                }
+            },
+            // 提交评论
+            async submitComment() {
+                const content = this.editor.txt.html(); // 获取编辑器内容
+                if (!content) return;
+
+                const comment = {
+                    content: content,
+                    author: this.author
+                };
+
+                try {
+                    await axios.post('/comment', comment);
+                    this.editor.txt.clear(); // 清空编辑器
+                    await this.fetchComments(); // 重新获取评论
+                } catch (error) {
+                    console.error('提交评论时出错:', error);
+                }
+            },
+            // 初始化编辑器
+            initEditor() {
+                const editor = new window.wangEditor('#editor');
+                editor.config.onchange = (html) => {
+                    // 可以在这里处理每次编辑器内容变化
+                };
+                editor.create();
+                this.editor = editor;
+            }
+        },
+        mounted() {
+            this.initEditor(); // 初始化编辑器
+            this.fetchComments(); // 获取评论
+        }
+    });
+
+</script>
+</body>
+</html>

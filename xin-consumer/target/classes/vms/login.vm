@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>科技之城</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 620px;
+            margin: auto;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+        .code {
+            display: block;
+            font-size: 24px;
+            color: #ff5f5f;
+            font-weight: bold;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #888;
+            font-size: 12px;
+        }
+        .timestamp {
+            text-align: right;
+            font-size: 14px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>邮箱验证码</h2>
+    <p>亲爱的用户，您好：</p>
+    <p>您正在进行账户操作，为了确保是您本人操作，请使用以下验证码完成验证：</p>
+
+    <span class="code">${captcha}</span>
+
+    <p>此验证码将在5分钟后过期，请尽快完成验证。如果您未请求此验证码，请忽略此邮件。</p>
+
+    <p>感谢您的使用！</p>
+    <p>科技之城平台</p>
+
+    <!-- 当前时间 -->
+    <div class="timestamp">
+        <p>发送时间：${currentDate}</p>
+    </div>
+</div>
+
+<div class="footer">
+    <p>© 2024 科技之城平台. 保留所有权利。</p>
+</div>
+</body>
+</html>

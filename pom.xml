@@ -1,0 +1,190 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.yc</groupId>
+  <artifactId>xinqiu</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>xinqiu</name>
+  <url>http://maven.apache.org</url>
+  <modules>
+    <module>xin-security</module>
+    <module>xin-entity</module>
+      <module>gateway</module>
+      <module>xin-product</module>
+      <module>xin-cart</module>
+    <module>xin-api</module>
+      <module>xin-address</module>
+      <module>xin-order</module>
+      <module>xin-consumer</module>
+      <module>xin-comment</module>
+      <module>xin-chat</module>
+      <module>xin-coupon</module>
+  </modules>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>3.2.8</version>
+    <relativePath/> <!-- 从仓库中查找父项目 -->
+  </parent>
+
+  <properties>
+
+    <java.version>17</java.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+    <!--    链路追踪-->
+    <micrometer-tracing.version>1.2.0</micrometer-tracing.version>
+    <micrometer-observation.version>1.12.0</micrometer-observation.version>
+    <feign-micrometer.version>12.5</feign-micrometer.version>
+    <zipkin-reporter-brave.version>2.17.0</zipkin-reporter-brave.version>
+
+  </properties>
+
+  <!--锁定项目版本 -->
+  <dependencyManagement>
+    <dependencies>
+
+      <!-- 阿里巴巴 Spring Cloud 依赖 -->
+      <dependency>
+        <groupId>com.alibaba.cloud</groupId>
+        <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+        <version>2023.0.1.0</version>
+        <!-- 此依赖不会打包到最终的构件中，只影响依赖的解析过程 -->
+        <type>pom</type>
+        <!-- 只与type=pom一起用，表示将此pom文件 中的 dependencyManagement 下的依赖信息导入当前pom -->
+        <scope>import</scope>
+      </dependency>
+      <!-- Spring Cloud 依赖 -->
+      <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-dependencies</artifactId>
+        <version>2023.0.1</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+
+      <!--micrometer-tracing-bom导入链路追踪版本中心  1-->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-tracing-bom</artifactId>
+        <version>${micrometer-tracing.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <!--micrometer-tracing指标追踪  2-->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-tracing</artifactId>
+        <version>${micrometer-tracing.version}</version>
+      </dependency>
+      <!--micrometer-tracing-bridge-brave适配zipkin的桥接包 3-->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-tracing-bridge-brave</artifactId>
+        <version>${micrometer-tracing.version}</version>
+      </dependency>
+      <!--micrometer-observation 4-->
+      <dependency>
+        <groupId>io.micrometer</groupId>
+        <artifactId>micrometer-observation</artifactId>
+        <version>${micrometer-observation.version}</version>
+      </dependency>
+      <!--feign-micrometer 5-->
+      <dependency>
+        <groupId>io.github.openfeign</groupId>
+        <artifactId>feign-micrometer</artifactId>
+        <version>${feign-micrometer.version}</version>
+      </dependency>
+      <!--zipkin-reporter-brave 6-->
+      <dependency>
+        <groupId>io.zipkin.reporter2</groupId>
+        <artifactId>zipkin-reporter-brave</artifactId>
+        <version>${zipkin-reporter-brave.version}</version>
+      </dependency>
+
+
+      <!-- Mysql驱动包 -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.33</version>
+      </dependency>
+      <!-- druid数据源 -->
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-3-starter</artifactId>
+        <version>1.2.20</version>
+      </dependency>
+      <!-- dao层框架  mybatis plus -->
+      <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        <version>3.5.7</version>
+      </dependency>
+
+
+      <!-- json工具包 -->
+      <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.11.0</version>
+      </dependency>
+
+      <!--   是一个 OpenAPI的发布工具  -->
+      <dependency>
+        <groupId>org.springdoc</groupId>
+        <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+        <version>2.6.0</version>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+      </dependency>
+
+      <!-- spring AOP的支持包  切面   aspectJ  -->
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-aop</artifactId>
+        <version>3.2.8</version> <!-- 这里使用与你的 Spring Boot 版本一致的版本号 -->
+      </dependency>
+
+      <!--  jwt认证模块     -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-api</artifactId>
+        <version>0.10.2</version>
+      </dependency>
+      <!--   jwt api impl实现   -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-impl</artifactId>
+        <version>0.10.2</version>
+      </dependency>
+      <!--   jwt  json   -->
+      <dependency>
+        <groupId>io.jsonwebtoken</groupId>
+        <artifactId>jjwt-jackson</artifactId>
+        <version>0.10.2</version>
+      </dependency>
+
+      <!--  阿里云oss  -->
+      <dependency>
+        <groupId>com.aliyun.oss</groupId>
+        <artifactId>aliyun-sdk-oss</artifactId>
+        <version>3.10.2</version>
+      </dependency>
+
+
+    </dependencies>
+  </dependencyManagement>
+
+
+
+</project>

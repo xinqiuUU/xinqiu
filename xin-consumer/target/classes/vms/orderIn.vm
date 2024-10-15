@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户变动通知</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            height: 100vh; /* 确保 body 高度为 100% */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: auto; /* 使 container 在水平方向上居中 */
+        }
+        h5 {
+            color: #444;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.8;
+            color: #666;
+            font-size: 16px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+        span.red {
+            color: #d9534f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <p>发件人: 科技之城平台</p>
+        <p>收件人: ${email}</p>
+    </div>
+    <h5>主题: <span class="red">${subject}</span></h5>
+    <p>尊敬的用户:</p>
+    <p>您于 <span class="red">${optime}</span> 进行了退款操作，退款金额为: <span class="red">${money}</span> 元。</p>
+    <p>账户编号为: <span class="red">${buyerId}</span></p>
+    <p>如果有任何问题，请及时联系我们的客户支持团队。</p>
+    <p>祝好！</p>
+    <p>科技之城平台</p>
+</div>
+<div class="footer">
+    <p>${currentDate}</p>
+    <p>此邮件为系统自动发送，请勿直接回复。</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,112 @@
+server:
+  port: 22222
+
+# 链路追踪 配置
+#management:
+#  zipkin:
+#    tracing:
+#      endpoint: http://localhost:9411/api/v2/spans
+#  tracing:
+#    sampling:
+#      probability: 1.0  # 采样率 1.0 表示全部采样  0.0 表示全部不采样
+#  endpoints:
+#    web:
+#      exposure:
+#        include: gateway,health,info
+#  endpoint:
+#    gateway:
+#      enabled: true
+
+
+spring:
+  application:
+    name: gateway  # 服务名  注册到nacos的服务名
+  cloud:
+    gateway:
+      # 浏览器  跨域问题的解决
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"  # 允许所有的域名
+            allowedMethods: "*"  # 允许所有的方法
+            allowedHeaders: "*"  # 允许所有的头
+#            allowCredentials: true  # 允许携带cookie
+
+      # 路由配置
+      routes:
+        #   商品服务
+        - id: xin-product
+#          uri:  http://localhost:8080/
+          uri: lb://xin-product  # 服务名 负载均衡 还有一种写法 http://localhost:8080/  直接写ip地址
+          predicates:
+            - Path=/product/**
+
+        # 评论服务
+        - id: xin-comment
+          #          uri:  http://localhost:8080/
+          uri: lb://xin-comment  # 服务名 负载均衡 还有一种写法 http://localhost:8080/  直接写ip地址
+          predicates:
+            - Path=/comment/**
+
+        #  聊天服务
+        - id: xin-chat
+          #          uri:  http://localhost:8080/
+          uri: lb://xin-chat  # 服务名 负载均衡 还有一种写法 http://localhost:8080/  直接写ip地址
+          predicates:
+            - Path=/chat/**
+
+        # 地址服务
+        - id: xin-address
+          #          uri:  http://localhost:8080/
+          uri: lb://xin-address  # 服务名 负载均衡 还有一种写法 http://localhost:8080/  直接写ip地址
+          predicates:
+            - Path=/address/**
+
+        # 优惠劵服务
+        - id: xin-coupon
+          #          uri:  http://localhost:8080/
+          uri: lb://xin-coupon  # 服务名 负载均衡 还有一种写法 http://localhost:8080/  直接写ip地址
+          predicates:
+            - Path=/coupon/**
+
+        #  订单服务
+        - id: xin-order
+          #
+          uri: lb://xin-order
+          predicates:
+            - Path=/order/**
+
+        # 身份认证服务
+        - id: xin-security
+          uri: lb://xin-security
+          predicates:
+            - Path=/security/**
+
+
+        # activemq  email 消息服务
+        - id: xin-consumer
+          uri: lb://xin-consumer
+          predicates:
+            - Path=/consumer/**
+
+        # 购物车 服务
+        - id: xin-cart
+          uri: lb://xin-cart
+          # 过滤器工厂
+          filters:
+            - TokenFilterFactory   # 过滤器工厂 类的全路径
+          # 断言工厂
+          predicates:
+            # PathRoutePredicateFactory 这个是一个路径断言工厂
+            - Path=/cart/**
+            # ServiceTimeBetweenRoutePredicateFactory 自定义时间断言工厂
+#            - ServiceTimeBetween=上午06:00,下午03:30 # 服务时间在6点到6点之间
+            # BetweenRoutePredicateFactory            gateway内置时间断言工厂
+#            - Between=2024-09-10T14:00:00+08:00,2024-09-10T15:28:19+08:00
+            # 时间在2024年9月10号的6点到20点之间
+
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos

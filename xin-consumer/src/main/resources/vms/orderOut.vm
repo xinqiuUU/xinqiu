@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>账户变动通知</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 25px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h5 {
+            color: #444;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+        }
+        p {
+            line-height: 1.8;
+            color: #666;
+            font-size: 16px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+        span.red {
+            color: #d9534f;
+            font-weight: bold;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #5cb85c;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <p>发件人: 科技之城平台</p>
+        <p>收件人: ${email}</p>
+    </div>
+    <h5>主题: <span class="red">${subject}</span></h5>
+    <p>尊敬的用户：</p>
+    <p>您于 <span class="red">${optime}</span> 进行了下单操作，消费金额为 <span class="red">${money}</span> 元。</p>
+    <p>账户编号为：<span class="red">${buyerId}</span></p>
+    <p>如有任何疑问，请联系我们的客户服务团队。</p>
+    <p>祝好！</p>
+    <p>科技之城平台团队</p>
+
+    <a href="http://localhost/index.html" class="btn">访问我们的平台</a>
+</div>
+<div class="footer">
+    <p>${currentDate}</p>
+    <p>此邮件为系统自动发送，请勿直接回复。</p>
+</div>
+</body>
+</html>

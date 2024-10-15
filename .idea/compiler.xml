@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="xin-chat" />
+        <module name="xin-product" />
+        <module name="xin-address" />
+        <module name="xin-entity" />
+        <module name="xin-api" />
+        <module name="xin-order" />
+        <module name="xin-consumer" />
+        <module name="xin-cart" />
+        <module name="xin-comment" />
+        <module name="xin-security" />
+        <module name="xin-coupon" />
+        <module name="gateway" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gateway" options="-parameters" />
+      <module name="xin-address" options="-parameters" />
+      <module name="xin-api" options="-parameters" />
+      <module name="xin-cart" options="-parameters" />
+      <module name="xin-chat" options="-parameters" />
+      <module name="xin-comment" options="-parameters" />
+      <module name="xin-consumer" options="-parameters" />
+      <module name="xin-coupon" options="-parameters" />
+      <module name="xin-entity" options="-parameters" />
+      <module name="xin-order" options="-parameters" />
+      <module name="xin-product" options="-parameters" />
+      <module name="xin-security" options="-parameters" />
+      <module name="xinqiu" options="" />
+    </option>
+  </component>
+</project>

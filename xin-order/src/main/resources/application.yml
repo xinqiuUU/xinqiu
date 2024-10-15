@@ -1,0 +1,6 @@
+alipay:
+  appId:       # 应用ID
+  appPrivateKey:    # 应用私钥
+  alipayPublicKey:   # 支付宝公钥
+  notifyUrl:  http://55axq9.natappfree.cc/order/alipay/notify       # 回调地址
+#  returnUrl: http://localhost/checkout       # 同步回调地址
