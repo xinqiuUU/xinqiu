@@ -78,7 +78,7 @@ public class PremiumService {
             String pid = (String) map.get("pid");
             // 获取商品详情并判断商品是否下架
             Product product = productMapper.getProductDetails(Integer.valueOf(pid));
-            if (product.getStatus() == 1) {  // 假设 status = 1 表示商品未下架
+            if ( product!=null &&  product.getStatus() == 1) {  // 假设 status = 1 表示商品未下架
                 productPicUtil.getProductPic(product, Integer.valueOf(pid));
                 products.add(product);
             }

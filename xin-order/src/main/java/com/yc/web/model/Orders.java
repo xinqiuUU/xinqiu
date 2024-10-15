@@ -26,13 +26,13 @@ public class Orders implements Serializable {
     //    #订单状态  0 待支付， 1 已付款， 2 已发货，-1,被取消订单  -3 退款  -4退款审核中，
     private Integer status;            //订单状态  0待支付，1已付款，2已发货，
     private String address;            //发货地址
-    private String  refund_reasons;     //退单原因
+    private String refund_reasons;     //退单原因
 //    如果是给别人买
     private String addressee;           //收件人
     private String emailee ;            //收件人邮箱
     private String phone;               //收件人电话
     private Double postage;             //运费
-    private String delivery_company;     //物流公司
+    private String delivery_company;    //物流公司
     private Integer id;                 //用户优惠劵id
     //关联的表的字段
 

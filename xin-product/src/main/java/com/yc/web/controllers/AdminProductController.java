@@ -24,6 +24,7 @@ import org.springframework.data.mongodb.core.aggregation.Aggregation;
 import org.springframework.data.mongodb.core.aggregation.AggregationResults;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -48,6 +49,8 @@ public class AdminProductController {
     private ProductPicMapper productPicMapper;
     @Autowired
     private MongoTemplate mongoTemplate;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     // 查看所有商品  并计算平均评分
     @GetMapping("/getAllProductsWithRating")
@@ -275,7 +278,7 @@ public class AdminProductController {
         }
         jm.setCode(0);
         jm.setMsg("添加商品成功");
-
+        redisTemplate.delete("newProductsCache::newProduct");
         return jm;
     }
 
@@ -401,8 +404,6 @@ public class AdminProductController {
 
         return numbers;
     }
-
-
 
 
 }

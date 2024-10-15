@@ -8,6 +8,7 @@ import com.yc.bean.model.JsonModel;
 import com.yc.dao.BottomPanelMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class FooterController {
     private BottomPanelMapper bottomPanelMapper;
 
     // 查看底部信息
+    @Cacheable(cacheNames = "footerDetail")
     @PostMapping("/getFooterInformation")
     public JsonModel getFooterInformation() {
         JsonModel jm = new JsonModel();

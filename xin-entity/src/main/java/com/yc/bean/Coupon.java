@@ -14,7 +14,7 @@ public class Coupon {
     @TableId(type = IdType.AUTO) // 自增主键
     @TableField("cid")  // 指定数据库中的字段名
     private Integer cid;  // 优惠券的唯一标识
-    private String code;        // 优惠券代码，必须唯一
+    private String code;       // 优惠券代码，必须唯一
     private String type;        // 优惠券类型，如折扣券
     private String value;   // 优惠券的折扣金额
     private String start_date;     // 优惠券生效的起始日期
