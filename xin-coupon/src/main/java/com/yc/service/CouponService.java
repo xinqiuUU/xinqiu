@@ -109,8 +109,8 @@ public class CouponService {
 
             // 使用分布式锁防止超卖
             String lockKey = "lock:coupon";
-            // 尝试获取锁 5秒超时 防止死锁
-            Boolean lock = redisTemplate.opsForValue().setIfAbsent(lockKey, uid, 5, TimeUnit.SECONDS);
+            // 尝试获取锁 10秒超时 防止死锁
+            Boolean lock = redisTemplate.opsForValue().setIfAbsent(lockKey, uid, 10, TimeUnit.SECONDS);
             if (Boolean.TRUE.equals(lock)) {
                 try {
                     // 扣减库存

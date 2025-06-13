@@ -30,6 +30,8 @@ public class CaptchaController {
         int captcha = 100000 + random.nextInt(900000); // 生成一个六位数的随机数
 //        mailBiz.send(email,"验证码","验证码:"+captcha);
         // 将验证码存入session中
+        // ****  应该将验证码存到  redis 中，而不是存到session中  ****
+        //                   键为 邮箱，值为 验证码     过期时间为 5分钟
         session.setAttribute("captcha", captcha);
         session.setAttribute("email", email);
         return ResponseResult.ok("验证码已发送");

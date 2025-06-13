@@ -11,6 +11,7 @@ import java.util.List;
 /*
  * 评论实体类
  */
+//评论实体类
 @Data
 @Document(collection = "comment") // 映射到 MongoDB 中的 "comment" 集合
 public class Comment {
@@ -21,9 +22,9 @@ public class Comment {
     private String pid;      // 商品pid
     private int rating;       // 评分
 
-    private String uid;      // 作者id 即uid
-    private String uname;    // 作者姓名
-    private String head_photo; // 作者头像
+    private String uid;      // 用户id 即uid
+    private String uname;    // 用户姓名
+    private String head_photo; // 用户头像
     private String createTime; // 评论时间
 
     private Integer status=1;  // -1 删除评价, 0 未审核, 1 审核通过, 2 审核不通过

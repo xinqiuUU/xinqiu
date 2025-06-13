@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 //全部  Rest API 风格
 @RestController
 @RequestMapping("/product")   //请求路径的前缀  http://localhost:8080/product/ + xxx

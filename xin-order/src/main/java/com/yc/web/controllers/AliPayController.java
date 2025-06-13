@@ -143,6 +143,12 @@ public class AliPayController {
 
         request.setBizContent(bizContent.toString());
 
+        // 调用接口更新订单状态为已支付
+        UpdateWrapper updateWrapper = new UpdateWrapper<>();
+        updateWrapper.eq("order_id", orders.getOrder_id());// 订单编号
+        updateWrapper.set("status", 1);
+        ordersMapper.update(updateWrapper);
+
         // 执行请求，拿到响应的结果，返回给浏览器
         String form = "";
         try {

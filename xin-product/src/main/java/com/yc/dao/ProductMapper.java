@@ -47,7 +47,7 @@ public interface ProductMapper extends BaseMapper<Product> {
         WHERE o.ordertime >= DATE_SUB(CURDATE(), INTERVAL 1 MONTH)
         GROUP BY od.pid 
         ORDER BY SUM(od.amount) DESC 
-        LIMIT 9
+        LIMIT 8
     ) AS Tpid ON p.pid = Tpid.pid
     WHERE p.status = 1
     """)

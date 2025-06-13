@@ -20,8 +20,7 @@ spring:
           - {data-id: threadpool.yml,refresh: true} #线程池配置
           - {data-id: activemq.yml,refresh: true} #activemq配置
           - {data-id: mybatisplus.yml,refresh: true} #mybatis-plus配置
-          - { data-id: micrometer.yml,refresh: true } # 监控配置 链路追踪
-
+          - {data-id: micrometer.yml,refresh: true } # 监控配置 链路追踪
 
 #  profiles:  #指定环境
 #    active: dev    #指定使用的配置文件  根据实际环境中修改

@@ -13,5 +13,5 @@ public interface CartApi {
 
     // 查看购物车
     @RequestMapping(value = "/cart/getCart", method = RequestMethod.POST)
-    public JsonModel getCart(@RequestHeader("token") String token) ;
+    JsonModel getCart(@RequestHeader("token") String token) ;
 }
